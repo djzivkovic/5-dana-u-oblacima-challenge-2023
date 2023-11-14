@@ -9,9 +9,9 @@ router.get("/player/:name", async (req, res) => {
     const playerStats = await service.getPlayerStats(storage, playerName);
     if(Object.keys(playerStats).length == 0) {
         res.status(404);
-        return res.json({message: "Player doesn't exist.", data: {}});
+        return res.json({message: "Player not found."});
     }
-    return res.json({message: "Sucessfully retrieved player stats.", data: playerStats});
+    return res.json({playerStats});
 });
 
 export default router;
