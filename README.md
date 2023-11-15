@@ -51,3 +51,7 @@ CSV Parse: CSV parser for Node.js.
 
 `REDIS_PORT`: Port on which the Redis database is running.
 
+## Author
+
+Djordje Zivkovic
+
