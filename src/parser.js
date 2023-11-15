@@ -80,6 +80,8 @@ export async function parsePlayerStats(rawData) {
             advanced: advancedDerivedStats
         };
 
+        delete fullPlayerStats.position; // public test case doesn't have this field ?
+
         result[fullPlayerStats.playerName] = JSON.stringify(fullPlayerStats, (k, val) => {
             return val.toFixed ? Number(val.toFixed(1)) : val;
         });
