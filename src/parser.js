@@ -81,7 +81,7 @@ export async function parsePlayerStats(rawData) {
         };
 
         result[fullPlayerStats.playerName] = JSON.stringify(fullPlayerStats, (k, val) => {
-            return val.toFixed ? val.toFixed(1) : val;
+            return val.toFixed ? Number(val.toFixed(1)) : val;
         });
     }
     return result;
@@ -101,7 +101,7 @@ function mapBasicStats(stats) {
           currentResult = currentResult[nestedKeys[i]] = currentResult[nestedKeys[i]] || {};
         }
     
-        currentResult[nestedKeys[nestedKeys.length - 1]] = typeof value == "number" ? value / stats["GAMES"] : value;
+        currentResult[nestedKeys[nestedKeys.length - 1]] = typeof value == "number" && key != "GAMES" ? value / stats["GAMES"] : value;
     }
     return result;
 }
